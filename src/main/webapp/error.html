@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVerse Academy – Erreur de Connexion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+    <style>
+:root {
+    --sidebar-w: 270px;
+    --bg: #07050f; --bg2: #0d0a1a; --panel: #110e22; --panel2: #1a1530;
+    --purple: #8b5cf6; --purple-bright: #a78bfa;
+    --pink: #ec4899; --pink-bright: #f472b6;
+    --blue: #3b82f6; --blue-bright: #60a5fa; --cyan: #22d3ee;
+    --white: #f0eaff; --dim: #7c6fa0;
+    --border: rgba(139,92,246,0.18); --border-bright: rgba(139,92,246,0.45);
+    --error: #ef4444; --error-bright: #f87171;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* BLOBS – Match dashboard style */
+.blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.12;
+}
+.blob-1 { width: 600px; height: 600px; background: var(--purple); top: -200px; left: -100px; }
+.blob-2 { width: 500px; height: 500px; background: var(--pink); bottom: -150px; right: -50px; }
+.blob-3 { width: 400px; height: 400px; background: var(--blue); top: 35%; left: 35%; }
+
+/* ERROR CARD – Glassmorphism with error accent */
+.error-container {
+    background: rgba(17,14,34,0.95);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(239,68,68,0.15);
+    animation: fadeUp 0.6s ease, pulseGlow 2s ease-in-out infinite;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+.error-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--error), var(--pink), transparent);
+    border-radius: 16px 16px 0 0;
+}
+
+/* ERROR ICON */
+.error-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: rgba(239,68,68,0.15);
+    border: 2px solid var(--error);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    animation: bounce 1.5s ease infinite;
+}
+
+/* TITLE – Orbitron with error gradient */
+.error-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--error-bright), var(--pink-bright));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* MESSAGE */
+.error-message {
+    color: var(--dim);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+}
+.error-message strong {
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* RETURN BUTTON – Gradient style with error theme */
+.return-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--error), var(--pink));
+    color: white;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(239,68,68,0.3);
+}
+.return-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(239,68,68,0.5);
+}
+.return-button:active {
+    transform: translateY(0);
+}
+.return-button svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(239,68,68,0.15); }
+    50% { box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 55px rgba(239,68,68,0.25); }
+}
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* SCROLLBAR – Match dashboard */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { 
+    background: linear-gradient(var(--purple), var(--pink)); 
+    border-radius: 99px; 
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+    .error-container { 
+        padding: 30px 24px; 
+        margin: 16px; 
+        max-width: calc(100% - 32px);
+    }
+    .error-title { font-size: 1.15rem; }
+    .error-icon { width: 60px; height: 60px; font-size: 1.7rem; }
+    .blob-1, .blob-2, .blob-3 { opacity: 0.08; }
+}
+</style>
+</head>
+<body>
+
+<!-- Background Blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<!-- Error Card -->
+<div class="error-container">
+    
+    <!-- Animated Error Icon -->
+    <div class="error-icon">⚠️</div>
+    
+    <!-- Title -->
+    <h1 class="error-title">Erreur de Connexion</h1>
+    
+    <!-- Message -->
+    <p class="error-message">
+        Aucun utilisateur trouvé avec les identifiants fournis.<br>
+        <strong>Vérifiez votre email et mot de passe.</strong>
+    </p>
+    
+    <!-- Return Button -->
+    <a href="./" class="return-button">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Retour à la connexion
+    </a>
+    
+</div>
+
+</body>
+</html>
