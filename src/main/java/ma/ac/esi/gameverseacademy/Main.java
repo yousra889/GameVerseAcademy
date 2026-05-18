@@ -57,7 +57,10 @@ public class Main {
 
         Tomcat.addServlet(ctx, "ReviewListController", new ReviewListController()).setLoadOnStartup(1);
         ctx.addServletMappingDecoded("/reviews", "ReviewListController");
+
      // version main
+     // version dev
+
         //tomcat
         tomcat.start();
         System.out.println(">>> http://localhost:8080/GameVerseAcademy");
